@@ -125,17 +125,19 @@ func deleteExistingSheet(args ...string) error {
 }
 
 func main() {
-	commandOptions := []menu.CommandOption{
-		{Command: "getSheetData", Description: "Get sheet data and print to the console", Function: getSheetData},
-		{Command: "addDataToSheet", Description: "Add data to sheet", Function: addDataToSheet},
-		{Command: "updateExistingDataInSheet", Description: "Update existing data in sheet", Function: updateExistingDataInSheet},
-		{Command: "deleteExistingDataInSheet", Description: "Delete existing data in sheet", Function: deleteExistingDataInSheet},
-		{Command: "createNewSheet", Description: "Create a new sheet in spreadsheet", Function: createNewSheet},
-		{Command: "renameExistingSheet", Description: "Rename existing sheet", Function: renameExistingSheet},
-		{Command: "deleteExistingSheet", Description: "Delete existing sheet", Function: deleteExistingSheet},
-	}
-	menuOptions := menu.NewMenuOptions("\n> ", 0)
-	integrationMenu := menu.NewMenu(commandOptions, menuOptions)
+	if gsc != nil {
+		commandOptions := []menu.CommandOption{
+			{Command: "getSheetData", Description: "Get sheet data and print to the console", Function: getSheetData},
+			{Command: "addDataToSheet", Description: "Add data to sheet", Function: addDataToSheet},
+			{Command: "updateExistingDataInSheet", Description: "Update existing data in sheet", Function: updateExistingDataInSheet},
+			{Command: "deleteExistingDataInSheet", Description: "Delete existing data in sheet", Function: deleteExistingDataInSheet},
+			{Command: "createNewSheet", Description: "Create a new sheet in spreadsheet", Function: createNewSheet},
+			{Command: "renameExistingSheet", Description: "Rename existing sheet", Function: renameExistingSheet},
+			{Command: "deleteExistingSheet", Description: "Delete existing sheet", Function: deleteExistingSheet},
+		}
+		menuOptions := menu.NewMenuOptions("\n> ", 0)
+		integrationMenu := menu.NewMenu(commandOptions, menuOptions)
 
-	integrationMenu.Start()
+		integrationMenu.Start()
+	}
 }
